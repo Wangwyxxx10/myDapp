@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>Pete's Pet Shop</title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1671.2">
+  <style type="text/css">
+    p.p2 {margin: 0.0px 0.0px 6.0px 0.0px; line-height: 14.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000; min-height: 12.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000; min-height: 12.0px}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 14.0px Courier; color: #161819; -webkit-text-stroke: #161819; background-color: #f6f9fb}
+    span.s1 {font-kerning: none}
+    span.s2 {font: 14.0px 'PingFang SC'; font-kerning: none}
+  </style>
+</head>
+<body>
+<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; line-height: 28.0px; font: 24.0px Times; color: #000000; -webkit-text-stroke: #000000; min-height: 24.0px"><span class="s1"><b></b></span><br></h1>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p4"><span class="s1">&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;</span></p>
+<p class="p4"><span class="s1">  &lt;title&gt;RuoliCoin - Truffle Demo &lt;/title&gt;</span></p>
+<p class="p4"><span class="s1">  &lt;link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" &gt;</span></p>
+<p class="p4"><span class="s1">  &lt;script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"&gt;&lt;/script&gt;</span></p>
+<p class="p4"><span class="s1">  &lt;script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"&gt;&lt;/script&gt;</span></p>
+<p class="p4"><span class="s1">  &lt;script src="./app.js"&gt;&lt;/script&gt;&lt;/head&gt;&lt;body&gt;</span></p>
+<p class="p4"><span class="s1">  &lt;div class="container" style="margin-top:80px;"&gt;</span></p>
+<p class="p4"><span class="s1">    </span></p>
+<p class="p4"><span class="s1">    &lt;div class="form-group"&gt;</span></p>
+<p class="p4"><span class="s1">      &lt;input type="text" class="form-control" id="transfer-addr" placeholder="</span><span class="s2">转入账户</span><span class="s1">"&gt;</span></p>
+<p class="p4"><span class="s1">    &lt;/div&gt;</span></p>
+<p class="p4"><span class="s1">    &lt;div class="form-group"&gt;</span></p>
+<p class="p4"><span class="s1">      &lt;input type="text" class="form-control" id="transfer-money" placeholder="</span><span class="s2">注入金额</span><span class="s1">"&gt;</span></p>
+<p class="p4"><span class="s1">    &lt;/div&gt;</span></p>
+<p class="p4"><span class="s1">    &lt;div class="alert" role="alert" style="display:none;" id="message-box"&gt;&lt;/div&gt;</span></p>
+<p class="p4"><span class="s1">    &lt;button type="submit" id="transfer-confirm-btn" class="btn btn-success"&gt;</span><span class="s2">转账</span><span class="s1">&lt;/button&gt;</span></p>
+<p class="p4"><span class="s1">    &lt;button type="button" id="transfer-clear-btn" class="btn btn-default"&gt;</span><span class="s2">重置</span><span class="s1">&lt;/button&gt;</span></p>
+<p class="p4"><span class="s1">    &lt;hr/&gt;</span></p>
+<p class="p4"><span class="s1">    &lt;div class="form-group"&gt;</span></p>
+<p class="p4"><span class="s1">      &lt;input type="text" class="form-control" id="balance-addr" placeholder="</span><span class="s2">查询余额账户</span><span class="s1">"&gt;</span></p>
+<p class="p4"><span class="s1">    &lt;/div&gt;</span></p>
+<p class="p4"><span class="s1">    &lt;button type="submit" id="balance-select" class="btn btn-success"&gt;</span><span class="s2">余额查询</span><span class="s1">&lt;/button&gt;</span></p>
+<p class="p4"><span class="s1">  &lt;/div&gt;&lt;/body&gt;&lt;script&gt;</span></p>
+<p class="p4"><span class="s1">  $(document).ready(function(){</span></p>
+<p class="p4"><span class="s1">      $('#transfer-confirm-btn').on('click', function(){          var transferAddr = $('#transfer-addr').val();          var transferMoney = $('#transfer-money').val();          if(transferAddr==''){</span></p>
+<p class="p4"><span class="s1">              showTips('alert-danger','</span><span class="s2">转入账户不能为空</span><span class="s1">');</span></p>
+<p class="p4"><span class="s1">          }else {              //</span><span class="s2">调用</span><span class="s1">App</span><span class="s2">的</span><span class="s1">say()</span><span class="s2">方法</span></p>
+<p class="p4"><span class="s1">              window.App.transfer(transferAddr,transferMoney, function (err, result) {                  if(err){</span></p>
+<p class="p4"><span class="s1">                     showTips('alert-danger',err);</span></p>
+<p class="p4"><span class="s1">                  }else {</span></p>
+<p class="p4"><span class="s1">                      showTips('alert-danger',result);</span></p>
+<p class="p4"><span class="s1">                  }</span></p>
+<p class="p4"><span class="s1">              });</span></p>
+<p class="p4"><span class="s1">          }</span></p>
+<p class="p4"><span class="s1">      });</span></p>
+<p class="p4"><span class="s1">      $('#balance-select').on('click', function(){          var balanceAddr = $('#balance-addr').val();          if(balanceAddr==''){</span></p>
+<p class="p4"><span class="s1">              showTips('alert-danger','</span><span class="s2">查询余额账不能为空</span><span class="s1">');</span></p>
+<p class="p4"><span class="s1">          }else {              //</span><span class="s2">调用</span><span class="s1">App</span><span class="s2">的</span><span class="s1">say()</span><span class="s2">方法</span></p>
+<p class="p4"><span class="s1">              window.App.getBalance(balanceAddr, function (err, result) {                  if(err){</span></p>
+<p class="p4"><span class="s1">                     showTips('alert-danger',err);</span></p>
+<p class="p4"><span class="s1">                  }else {</span></p>
+<p class="p4"><span class="s1">                      showTips('alert-danger','</span><span class="s2">账户余额：</span><span class="s1">'+result);</span></p>
+<p class="p4"><span class="s1">                  }</span></p>
+<p class="p4"><span class="s1">              });</span></p>
+<p class="p4"><span class="s1">          }</span></p>
+<p class="p4"><span class="s1">      });</span></p>
+<p class="p4"><span class="s1">      $('#cancel').on('click', function(){</span></p>
+<p class="p4"><span class="s1">          $('#username').val('');</span></p>
+<p class="p4"><span class="s1">          $('#message-box').hide();</span></p>
+<p class="p4"><span class="s1">          $('#message-box').html('');</span></p>
+<p class="p4"><span class="s1">      });</span></p>
+<p class="p4"><span class="s1">  });  function showTips(classType,tipsText){</span></p>
+<p class="p4"><span class="s1">      $('#message-box').addClass(classType).html(tipsText+'');</span></p>
+<p class="p4"><span class="s1">      $('#message-box').fadeIn(800);</span></p>
+<p class="p4"><span class="s1">  }&lt;/script&gt;&lt;/html&gt;</span></p>
+</body>
+</html>
